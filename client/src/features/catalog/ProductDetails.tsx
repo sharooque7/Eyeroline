@@ -11,6 +11,9 @@ import {
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import agent from "../../app/api/agent";
+import NotFound from "../../app/erros/NotFound";
+import LoadingComponent from "../../app/layout/LoadingComponent";
 import { Product } from "../../app/models/product";
 
 const ProductDetails = () => {
@@ -26,18 +29,18 @@ const ProductDetails = () => {
 
   const handleProduct = async (id: string | undefined) => {
     try {
-      const response = await axios.get(
-        `http://localhost:5000/api/products/${id}`
-      );
-      setProduct(response.data);
+      if (id) {
+        const data = await agent.Catalog.details(parseInt(id));
+        setProduct(data);
+      }
     } catch (error) {
       console.log(error);
     } finally {
       setLoading(false);
     }
   };
-  if (loading) return <h3>Loading ....ß</h3>;
-  if (!product) return <h3>Product not found</h3>;
+  if (loading) return <LoadingComponent message="Loading product..." />;
+  if (!product) return <NotFound />;
   return (
     <Grid container spacing={6}>
       <Grid item xs={6}>
