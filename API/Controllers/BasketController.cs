@@ -24,7 +24,7 @@ namespace API.Controllers
         }
 
 
-        [HttpPost]///api/basktet?productId=3&quantity=2
+        [HttpPost]
         public async Task<ActionResult> AddItemToBasket(int productId, int quantity)
         {
             var basket = await RetriveBaskets();
@@ -72,7 +72,7 @@ namespace API.Controllers
             _context.Baskets.Add(basket);
             return basket;
         }
-
+        [NonAction]
         public BasketDto MapBasketToDto(Basket basket)
         {
 
