@@ -1,5 +1,5 @@
 import { FormGroup, FormControlLabel, Checkbox } from "@mui/material";
-import  { useState } from "react";
+import { useState } from "react";
 
 interface Props {
   items: string[];
@@ -10,7 +10,7 @@ const CheckButton = ({ items, checked, onChange }: Props) => {
   const [checkedItem, setCheckedItem] = useState(checked || []);
 
   function handleChecked(value: string) {
-    const currentIndex = checkedItem.findIndex((item) => item == value);
+    const currentIndex = checkedItem.findIndex((item) => item === value);
     let newChecked: string[] = [];
     if (currentIndex === -1) newChecked = [...checkedItem, value];
     else newChecked = checkedItem.filter((item) => item !== value);
