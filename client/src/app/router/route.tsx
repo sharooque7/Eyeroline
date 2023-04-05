@@ -12,6 +12,7 @@ import NotFound from "../erros/NotFound";
 import ServerError from "../erros/ServerError";
 import App from "../layout/App";
 import RequiredAuth from "./RequiredAuth";
+import Orders from "../../features/orders/Orders";
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -23,6 +24,10 @@ export const router = createBrowserRouter([
           {
             path: "checkout",
             element: <CheckoutPage />,
+          },
+          {
+            path: "orders",
+            element: <Orders />,
           },
         ],
       },
