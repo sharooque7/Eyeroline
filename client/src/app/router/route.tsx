@@ -13,6 +13,7 @@ import ServerError from "../erros/ServerError";
 import App from "../layout/App";
 import RequiredAuth from "./RequiredAuth";
 import Orders from "../../features/orders/Orders";
+import CheckoutWrapper from "../../features/checkout/CheckoutWrapper";
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -23,7 +24,7 @@ export const router = createBrowserRouter([
         children: [
           {
             path: "checkout",
-            element: <CheckoutPage />,
+            element: <CheckoutWrapper />,
           },
           {
             path: "orders",
