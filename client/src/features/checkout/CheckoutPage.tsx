@@ -152,7 +152,7 @@ export default function CheckoutPage() {
   }
 
   const handleNext = async (data: FieldValues) => {
-    if (activeStep == steps.length - 1) {
+    if (activeStep === steps.length - 1) {
       await submitOrder(data);
     } else {
       setActiveStep(activeStep + 1);

@@ -10,6 +10,8 @@ import { router } from "./app/router/route";
 import { store } from "./app/store/configureStore";
 import React from "react";
 import { Provider } from "react-redux";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );

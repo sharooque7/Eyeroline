@@ -1,0 +1,33 @@
+# fly.toml file generated for storerestore on 2023-04-07T21:06:22+05:30
+
+app = "storerestore"
+kill_signal = "SIGINT"
+kill_timeout = 5
+mounts = []
+primary_region = "sin"
+processes = []
+
+[build]
+  image = "sharooque11/storeimage:latest"
+
+[env]
+  ASPNETCORE_URL="http://+:8080"
+  StripeSettings__Publishablekey="pk_test_51MtWvBSDLKUJanGCFn15Pko8pMu9DAKKbWoqNCXFC6zTVIdV3zQu29V34jzJpzbuNcbbwI3evUj8lM9sDlTUNVuh00QD7bUXNA"
+
+[[services]]
+  internal_port = 8080
+  processes = ["app"]
+  protocol = "tcp"
+  [services.concurrency]
+    hard_limit = 25
+    soft_limit = 20
+    type = "connections"
+
+  [[services.ports]]
+    force_https = true
+    handlers = ["http"]
+    port = 80
+
+  [[services.ports]]
+    handlers = ["tls", "http"]
+    port = 443
